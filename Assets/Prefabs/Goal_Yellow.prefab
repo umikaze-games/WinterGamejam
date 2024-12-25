@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5169543221403856491}
   - component: {fileID: 180349738126857895}
   - component: {fileID: 3798374726483072059}
+  - component: {fileID: 1506013122965432157}
   m_Layer: 0
   m_Name: Goal_Yellow
   m_TagString: Untagged
@@ -106,3 +107,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c7bd79f25c690294f893f8905d2264f5, type: 3}
+--- !u!65 &1506013122965432157
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2206429281546219647}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3071121, y: 2.0261073, z: 0.45155507}
+  m_Center: {x: 0.653556, y: 1.4302182, z: 0.07515043}

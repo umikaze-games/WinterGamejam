@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5036786638247782068}
   - component: {fileID: 2090564615200531190}
   - component: {fileID: 144360131795164404}
+  - component: {fileID: 9118177331086493443}
   m_Layer: 0
   m_Name: Goal_Blue
   m_TagString: Untagged
@@ -106,3 +107,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c7bd79f25c690294f893f8905d2264f5, type: 3}
+--- !u!65 &9118177331086493443
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7683256317711781898}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3071117, y: 1.9267445, z: 0.6525212}
+  m_Center: {x: 0.65355587, y: 1.5099256, z: 0.08521041}
