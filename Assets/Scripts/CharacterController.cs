@@ -34,6 +34,9 @@ public class CharacterController : MonoBehaviour
     // 爆炸特效
     public GameObject explosionPrefab;
 
+    // 提示可以按下Ctrl的UI
+    public GameObject crouchHint;
+
     public void Awake()
     {
         DontDestroyOnLoad(this);
@@ -89,6 +92,10 @@ public class CharacterController : MonoBehaviour
                 materialColor = MaterialColor.Blue;
                 ChangeRendererMaterial();
                 break;
+            case "Yellow":
+                materialColor = MaterialColor.Yellow;
+                ChangeRendererMaterial();
+                break;
             default:
                 break;
         }
@@ -116,6 +123,14 @@ public class CharacterController : MonoBehaviour
 
             // 重置角色状态
             ResetCharacter();
+        }
+
+        // 如果tag是CanUseCtrl，则显示提示UI
+        if (other.gameObject.tag == "CanUseCtrl")
+        {
+            crouchHint.SetActive(true);
+            SideScrollingCharacter character = GetComponent<SideScrollingCharacter>();
+            character.canCrouch = true;
         }
     }
 

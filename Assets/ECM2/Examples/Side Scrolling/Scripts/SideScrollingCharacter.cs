@@ -12,8 +12,12 @@ namespace ECM2.Examples.SideScrolling
     {
         // 是否可以操作
         public bool canControl = true;
-        
-        
+
+        public bool canCrouch = false;
+
+        // 提示可以按下Ctrl的UI
+        public GameObject crouchHint;
+
 
         protected override void Awake()
         {
@@ -37,11 +41,24 @@ namespace ECM2.Examples.SideScrolling
                 SetMovementDirection(Vector3.right * moveInput);
 
                 // Crouch input
+                if (canCrouch)
+                {
+                    if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
+                    {
+                        Crouch();
 
-                if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
-                    Crouch();
-                else if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.C))
-                    UnCrouch();
+                        // 取消提示UI
+                        if (crouchHint != null)
+                        {
+                            crouchHint.SetActive(false);
+                        }
+                    }
+
+
+                    else if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.C))
+                        UnCrouch();
+                }
+
 
                 // Jump input
 
