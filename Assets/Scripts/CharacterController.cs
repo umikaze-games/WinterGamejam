@@ -30,9 +30,6 @@ public class CharacterController : MonoBehaviour
 
     public SkinnedMeshRenderer skinnedMeshRenderer;
 
-    private void Update()
-    {
-    }
 
     // 切换材质的方法
     [Button]
@@ -60,14 +57,6 @@ public class CharacterController : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        // 如果tag是Red，就切换成红色材质
-        if (other.gameObject.CompareTag("Red"))
-        {
-            Debug.Log("碰到了红色物体！");
-            materialColor = MaterialColor.Red;
-            ChangeRendererMaterial();
-        }
-        
         // 使用switch语句，根据tag切换材质
         switch (other.gameObject.tag)
         {
@@ -86,5 +75,28 @@ public class CharacterController : MonoBehaviour
             default:
                 break;
         }
+
+        // 当该物体图层为"Floor"时，执行方法
+        if (other.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            Debug.Log("碰到了地板！");
+
+            // 得到该物体上的Floor脚本
+            Floor floor = other.GetComponent<Floor>();
+
+            // 如果玩家的颜色和地板的颜色不一样，暂停游戏
+            if (floor != null && floor.currentState == Floor.State.Colored && floor.currentColor != materialColor)
+            {
+                Die();
+            }
+        }
+    }
+
+    // 玩家死亡执行办法
+    public void Die()
+    {
+        Debug.Log("玩家死亡！");
+        // 时间归零
+        Time.timeScale = 0;
     }
 }

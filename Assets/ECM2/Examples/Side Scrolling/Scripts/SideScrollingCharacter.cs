@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 namespace ECM2.Examples.SideScrolling
 {
     /// <summary>
@@ -86,5 +88,7 @@ namespace ECM2.Examples.SideScrolling
             // 恢复碰撞
             IgnoreCollision(platformCollider, false);
         }
+        
+        
     }
 }
