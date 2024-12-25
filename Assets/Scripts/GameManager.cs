@@ -1,18 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // 保证该脚本切换场景时不被销毁
+    private void Awake()
     {
-        
+        DontDestroyOnLoad(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    // 切换场景方法
+    public void ChangeScene(int index)
     {
-        
+        UnityEngine.SceneManagement.SceneManager.LoadScene(index);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            FindObjectOfType<AdjustSaturation>().ToggleSaturation();
+        }
     }
 }
