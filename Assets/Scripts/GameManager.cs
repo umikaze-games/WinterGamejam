@@ -24,4 +24,5 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<AdjustSaturation>().ToggleSaturation();
         }
     }
+    
 }
