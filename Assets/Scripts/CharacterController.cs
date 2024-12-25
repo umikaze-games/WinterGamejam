@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ECM2.Examples.SideScrolling;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -30,6 +31,22 @@ public class CharacterController : MonoBehaviour
 
     public SkinnedMeshRenderer skinnedMeshRenderer;
 
+    // 爆炸特效
+    public GameObject explosionPrefab;
+
+    public void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
+    private void Update()
+    {
+        // 如果transform的position.y小于-20，则死亡
+        if (transform.position.y < -20)
+        {
+            Die();
+        }
+    }
 
     // 切换材质的方法
     [Button]
@@ -90,13 +107,74 @@ public class CharacterController : MonoBehaviour
                 Die();
             }
         }
+
+        // 当玩家碰到切换场景的门时，切换到当前场景编号+1的场景
+        if (other.gameObject.tag == "SwitchScene")
+        {
+            FindObjectOfType<GameManager>()
+                .ChangeScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
+
+            // 重置角色状态
+            ResetCharacter();
+        }
     }
 
     // 玩家死亡执行办法
     public void Die()
     {
         Debug.Log("玩家死亡！");
-        // 时间归零
-        Time.timeScale = 0;
+
+        // 开启爆炸特效
+        explosionPrefab.SetActive(true);
+
+        // 禁止角色控制
+        SideScrollingCharacter character = GetComponent<SideScrollingCharacter>();
+        character.canControl = false;
+
+        // 关闭角色的碰撞体
+        Collider collider = GetComponent<Collider>();
+        if (collider != null)
+        {
+            collider.enabled = false;
+        }
+
+        //角色消失
+        skinnedMeshRenderer.enabled = false;
+
+        // 2秒后重置角色状态
+        Invoke("ResetCharacter", 2.1f);
+        // 2秒后重新加载当前场景
+        Invoke("ReloadScene", 2f);
+    }
+
+    // 切换场景时，重置角色状态
+    public void ResetCharacter()
+    {
+        SideScrollingCharacter character = GetComponent<SideScrollingCharacter>();
+        character.canControl = true;
+
+        // 关闭角色的碰撞体
+        Collider collider = GetComponent<Collider>();
+        if (collider != null)
+        {
+            collider.enabled = true;
+        }
+
+        skinnedMeshRenderer.enabled = true;
+
+        // 关闭爆炸特效
+        explosionPrefab.SetActive(false);
+
+        materialColor = MaterialColor.Yellow;
+        ChangeRendererMaterial();
+
+        Time.timeScale = 1;
+    }
+
+    // 重新加载当前场景
+    public void ReloadScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene()
+            .buildIndex);
     }
 }

@@ -1,8 +1,14 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
 public class AlignCameraToSceneView : MonoBehaviour
 {
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     [MenuItem("Tools/Align Camera to Scene View")]
     private static void AlignCamera()
     {

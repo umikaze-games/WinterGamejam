@@ -9,6 +9,11 @@ public class AdjustSaturation : MonoBehaviour
     public Volume volume; // 拖入 Volume 对象
     private ColorAdjustments colorAdjustments;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     void Start()
     {
         if (volume.profile.TryGet(out colorAdjustments))

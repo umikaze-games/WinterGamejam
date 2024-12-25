@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 namespace ECM2.Examples.SideScrolling
 {
     /// <summary>
@@ -11,6 +10,11 @@ namespace ECM2.Examples.SideScrolling
     /// </summary>
     public class SideScrollingCharacter : Character
     {
+        // 是否可以操作
+        public bool canControl = true;
+        
+        
+
         protected override void Awake()
         {
             // Call base method implementation
@@ -24,34 +28,38 @@ namespace ECM2.Examples.SideScrolling
 
         private void Update()
         {
-            // Add horizontal movement (in world space)
-
-            float moveInput = Input.GetAxisRaw("Horizontal");
-            SetMovementDirection(Vector3.right * moveInput);
-
-            // Crouch input
-
-            if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
-                Crouch();
-            else if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.C))
-                UnCrouch();
-
-            // Jump input
-
-            if (Input.GetButtonDown("Jump"))
-                Jump();
-            else if (Input.GetButtonUp("Jump"))
-                StopJumping();
-
-            // Snap side to side rotation
-
-            if (moveInput != 0.0f)
-                SetYaw(moveInput * 90.0f);
-
-            // 如果按下S键，从平台下落
-            if (Input.GetKeyDown(KeyCode.S))
+            // 如果可以操作
+            if (canControl)
             {
-                FallThrough();
+                // Add horizontal movement (in world space)
+
+                float moveInput = Input.GetAxisRaw("Horizontal");
+                SetMovementDirection(Vector3.right * moveInput);
+
+                // Crouch input
+
+                if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
+                    Crouch();
+                else if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.C))
+                    UnCrouch();
+
+                // Jump input
+
+                if (Input.GetButtonDown("Jump"))
+                    Jump();
+                else if (Input.GetButtonUp("Jump"))
+                    StopJumping();
+
+                // Snap side to side rotation
+
+                if (moveInput != 0.0f)
+                    SetYaw(moveInput * 90.0f);
+
+                // 如果按下S键，从平台下落
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    FallThrough();
+                }
             }
         }
 
@@ -88,7 +96,5 @@ namespace ECM2.Examples.SideScrolling
             // 恢复碰撞
             IgnoreCollision(platformCollider, false);
         }
-        
-        
     }
 }
