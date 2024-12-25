@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterObjectScene_Water_01
+  m_Name: BlueWater
   m_Shader: {fileID: 4800000, guid: efcaf526ceb1f4efd9eb4e4c30c6ade6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -147,12 +147,12 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0, g: 1, b: 0.7287984, a: 1}
-    - _ColorDeep: {r: 1, g: 0.6701789, b: 0.63529414, a: 1}
-    - _ColorShallow: {r: 0.8443396, g: 0.58538103, b: 0.5735137, a: 1}
+    - _ColorDeep: {r: 0.63529414, g: 0.71490866, b: 1, a: 1}
+    - _ColorShallow: {r: 0.57254905, g: 0.675095, b: 0.84313726, a: 1}
     - _ColorTop: {r: 1, g: 1, b: 1, a: 0}
     - _CrestColor: {r: 1, g: 1, b: 1, a: 0.9}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamColor: {r: 0.9528302, g: 0.48540404, b: 0.4944655, a: 0.7372549}
+    - _FoamColor: {r: 0.48733082, g: 0.4862745, b: 0.9529412, a: 0.7372549}
     - _FoamStretch: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
