@@ -1,3 +1,4 @@
+using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -20,6 +21,7 @@ public class AdjustSaturation : MonoBehaviour
         }
     }
 
+
     // 调整 Saturation 的方法
     [Button]
     public void SetSaturation(float value)
@@ -28,6 +30,20 @@ public class AdjustSaturation : MonoBehaviour
         {
             colorAdjustments.saturation.Override(value);
             Debug.Log($"Saturation set to: {value}");
+        }
+    }
+
+    // 如果饱和度为-100，则设置为0，否则设置为-100
+    [Button]
+    public void ToggleSaturation()
+    {
+        if (colorAdjustments.saturation.value == -100)
+        {
+            SetSaturation(0);
+        }
+        else
+        {
+            SetSaturation(-100);
         }
     }
 }
