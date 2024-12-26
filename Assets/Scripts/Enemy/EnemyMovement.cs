@@ -10,6 +10,9 @@ public class EnemyMovement : MonoBehaviour
     public float oscillationAmplitude = 0.5f; // 上下波动幅度
     public float oscillationFrequency = 2f; // 上下波动频率
 
+    [Header("Height Constraints")]
+    public float minHeight = 0f; // 最低高度
+
     private Vector3 startPosition;
     private float direction = 1f; // 移动方向
 
@@ -33,6 +36,14 @@ public class EnemyMovement : MonoBehaviour
 
         // 垂直波动
         float verticalOffset = Mathf.Sin(Time.time * oscillationFrequency) * oscillationAmplitude;
-        transform.position = new Vector3(transform.position.x, startPosition.y + verticalOffset, transform.position.z);
+        float newY = startPosition.y + verticalOffset;
+
+        // 应用最低高度限制
+        if (newY < minHeight)
+        {
+            newY = minHeight;
+        }
+
+        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
 }

@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Red
   - Blue
+  - SwitchScene
+  - Green
+  - CanUseCtrl
+  - Yellow
   layers:
   - Default
   - TransparentFX
