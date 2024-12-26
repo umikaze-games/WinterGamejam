@@ -818,10 +818,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MustNeed
       objectReference: {fileID: 0}
-    - target: {fileID: 5848166291609497643, guid: ef5f61da09896a14598c4c3d7f6d6cb2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5855441955835678803, guid: ef5f61da09896a14598c4c3d7f6d6cb2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.075401
@@ -5344,11 +5340,11 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 330013328}
   - {fileID: 1251055357}
   - {fileID: 928214067}
   - {fileID: 1287038348}
   - {fileID: 957573044}
-  - {fileID: 330013328}
   - {fileID: 1027747230}
   - {fileID: 538817359}
   - {fileID: 2049400098}

@@ -133,6 +133,16 @@ public class CharacterController : MonoBehaviour
             character.canCrouch = true;
         }
     }
+    
+    public void OnTriggerExit(Collider other)
+    {
+        // 如果tag是CanUseCtrl，则关闭canCrouch
+        if (other.gameObject.tag == "CanUseCtrl")
+        {
+                     SideScrollingCharacter character = GetComponent<SideScrollingCharacter>();
+            character.canCrouch = false;
+        }
+    }
 
     // 玩家死亡执行办法
     public void Die()
